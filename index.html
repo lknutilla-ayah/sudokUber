@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <input class = "cell" id = "00a" readonly value = "1" />
+            </td>
+            <td>
+                <input class = "cell" id = "01a" onblur = "checkValid(this)"/>
+            </td>
+            <td>
+                <input class = "cell" id = "02b" onblur = "checkValid(this)"/>
+            </td>
+            <td>
+                <input class = "cell" id = "03b" onblur = "checkValid(this)"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class = "cell" id = "10a" onblur = "checkValid(this)"/>
+            </td>
+            <td>
+                <input class = "cell" id = "11a" onblur = "checkValid(this)"/>
+            </td>
+            <td>
+                <input class = "cell" id = "12b" readonly value = "1">
+            </td>
+            <td>
+                <input class = "cell" id = "13b" readonly value = "4">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class = "cell" id = "20c" onblur = "checkValid(this)"/>
+            </td>
+            <td>
+                <input class = "cell" id = "21c" readonly value = "3" />
+            </td>
+            <td>
+                <input class = "cell" id = "22d" readonly value = "2">
+            </td>
+            <td>
+                <input class = "cell" id = "23d" onblur = "checkValid(this)"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class = "cell" id = "30c" onblur = "checkValid(this)"/>
+            </td>
+            <td>
+                <input class = "cell" id = "31c" onblur = "checkValid(this)"/>
+            </td>
+            <td>
+                <input class = "cell" id = "32d" onblur = "checkValid(this)"/>
+            </td>
+            <td>
+                <input class = "cell" id = "33d" onblur = "checkValid(this)"/>
+            </td>
+        </tr>
+    </table>
+    <button type="submit" onClick = "checkBoard()">Check</button>
+    <script type="text/javascript">
+        function checkValid(numb) {
+            console.log(numb.value);
+            if(numb.value != "" && numb.value != undefined) {
+                if (numb.value % 1 != 0 || numb.value > 9 || numb.value < 1) {
+                    console.log("Invalid Entry");
+                }
+                var board = document.getElementsByClassName("cell");
+                var check = document.getElementById(numb.id);
+                check = check.id.split("");
+                for (var i = 0; i < board.length; ++i) {
+                    var boardId = board[i].id;
+                    boardId = boardId.split("");
+                    var row = boardId[0];
+                    var col = boardId[1];
+                    var block = boardId[2];
+                    if (row === check[0] && col === check[1]) continue;
+                    if (row === check[0]) {
+                        if (numb.value === board[i].value) {
+                            console.log("Row occupied");
+                        }
+                    }
+                    if (col === check[1]) {
+                        if (numb.value === board[i].value) {
+                            console.log("Column occupied");
+                        }
+                    }
+                    if (block === check[2]) {
+                        if (numb.value === board[i].value) {
+                            console.log("Block occupied");
+                        }
+                    }
+                }
+            }
+            console.log(board[0].id.split(""));
+            console.log(check);
+
+        };
+
+    </script>
+</body>
+</html>
