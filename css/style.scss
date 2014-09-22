@@ -1,0 +1,35 @@
+/*style.scss*/
+
+body {
+    background-color: #99DAEB;
+    font-family: 'Raleway', sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+table {
+    margin: auto;    
+}
+
+input {
+    -webkit-appearance: none; 
+    box-shadow: none;
+    outline: none;   
+    border: none;
+    background-color: white; 
+    text-align: center;
+    height: 1.5em;
+    width: 1.5em;
+    font-size: 1.5em;
+}
+
+.grey_block {
+    background-color: #E6E6E6;
+}
+
+#done {
+    position: relative;
+    float: left;
+}
