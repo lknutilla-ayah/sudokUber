@@ -7,7 +7,9 @@
 <body onload = "createSudoku()">
     <div id="wrapper">
     <!-- start html block -->
-        <header><h1>SudokUber</h1></header>
+        <header>
+            <h1>SudokUber</h1>
+        </header>
         <nav></nav>
         <section class="content">
             <div id = "sudokuBoard">
@@ -18,7 +20,8 @@
             </div>
         </section>
         <aside class="sidebar">
-            <button onclick="fillBoard()">New Game</button></br>
+            <div id = "timer">00:00</div>
+            <button onclick="fillBoard(); startClock();">New Game</button></br>
             <button id = "done" type = "submit" onclick = "checkBoard()">Done!</button></br>
             <h2>Rules</h2>
             <p>The Classic Sudoku is a number placing puzzle based on a 9x9 grid with several given numbers. The object is to place the numbers 1 to 9 in the empty squares so that each row, each column and each 3x3 box contains the same number only once.</p>
@@ -29,18 +32,37 @@
     </div>
 
     <script type="text/javascript">
-        function startTime() {
-            var min = today.getMinutes();
-            var s = today.getSeconds();
-            m = checkTime(m);
-            s = checkTime(s);
-            document.getElementById('txt').innerHTML = h+":"+m+":"+s;
-            var t = setTimeout(function(){startTime()},500);
+        var clicked = false;
+        var sec,min;
+        function startClock() {
+            sec = 0;
+            min = 0;
+            if (clicked === false) {
+                clock = setInterval("stopWatch()", 1000);
+                clicked = true;
+            }
+            else if (clicked === true) {
+            }
         }
 
-        function checkTime(i) {
-            if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
-            return i;
+        function stopWatch() {
+            if (sec === 60) {
+                ++min;
+                sec = 0;
+            }
+            sec++;
+            document.getElementById("timer").innerHTML = convertToTime(min) + ":" + convertToTime(sec);
+        }
+        function convertToTime(time){
+            if (time > 9) return time;
+            else return "0"+time;
+        }
+
+        function stopClock() {
+            window.clearInterval(clock);
+            sec = 0;
+            document.getElementById("timer").innerHTML="00:00";
+            clicked = false;
         }
         function createSudoku() {
             var check = document.getElementsByClassName("cell");
@@ -163,10 +185,10 @@
             for (var i = 0; i < 9; ++i) {
                 var cells = fishYatesShuffle(9);
                 var cur_block = block.pop();
-                for (var j = 0; j < 5; ++ j) {
+                for (var j = 0; j < 4; ++ j) {
                     var cell = cells.pop() + cur_block * 9;
                     board[cell].readOnly = false;
-                    board[cell].onBlur = checkValid(board[cell]);
+                    board[cell].onblur = function(event) { checkValid(this); };
                     board[cell].value = "";
                 }
             }
@@ -249,7 +271,10 @@
                     }
                 }
             }
-            if (valid) console.log("Good");
+            if (valid) {
+               stopClock(); 
+               console.log("Good");
+            } 
         }
 
     </script>

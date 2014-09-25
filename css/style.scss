@@ -1,7 +1,7 @@
 /*style.scss*/
 
 body {
-    background-color: #99DAEB;
+    background-color: #99EBFF;
     font-family: 'Raleway', sans-serif;
     margin: 0 auto;
 }
@@ -39,6 +39,16 @@ button:hover{
     background-color: #E6E6E6; 
 }
 
+#sudokuTable {
+    margin: 0 auto 0 auto;
+}
+
+#timer {
+    font-size: 1.2em;
+    padding: 10px;
+    text-align: center;
+}
+
 input {
     -webkit-appearance: none; 
     box-shadow: none;
@@ -46,8 +56,8 @@ input {
     border: none;
     background-color: white; 
     text-align: center;
-    height: 1.5em;
-    width: 1.5em;
+    width: 1.6em;
+    height: 1.6em;
     font-size: 1.5em;
 }
 
