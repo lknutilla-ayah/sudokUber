@@ -1,4 +1,8 @@
 /*By Laura Knutilla*/
+
+/*Timer function begins time when "New Game" is pressed, and ends when "Done!" is pressed
+and the board is valid*/
+//START TIMER SECTION
         var clicked = false;
         var sec,min;
         function startClock() {
@@ -30,6 +34,9 @@
             document.getElementById("timer").innerHTML= convertToTime(min) + ":" + convertToTime(sec);
             clicked = false;
         }
+//END TIMER SECTION
+/*createSudoku() creates a base board framework and is executed on page load*/
+//BEGIN CREATE BOARD
         function createSudoku() {
             var check = document.getElementsByClassName("cell");
             if (check.length != 0) {
@@ -81,11 +88,14 @@
             board.appendChild(boardbdy);
             body.appendChild(board);
         };
-
+/*fillBoard() fills the board with a complete base sudoku board, it then scrambles the rows/cols/and numbers. 
+It is executed on "New Game" press, and calls hideCells(). The algorithm is based on the sudoku generator by 
+David J. Rager at http://blog.fourthwoods.com/2011/02/05/sudoku-in-javascript/     
+*/
         function fillBoard() {
             var board = document.getElementsByClassName("cell");
             var randomNine = fishYatesShuffle(9);
-            //create sudoku board
+            //create base sudoku board
             for (var i = 0; i < 9; i++) {
                 for (var j = 0; j < 9; j++) {
                     board[i * 9 + j].value = (i * 3 + Math.floor(i/3) + j) % 9 + 1;
@@ -93,7 +103,7 @@
                     board[i * 9 + j].style.color = "black";
                 }
             }
-            //switch corresponding col
+            //switch corresponding cols (Ex. the 2nd and 5th column)
             for (var i = 0; i < 20; ++i) {
                 var col = Math.floor(Math.random() * 3);
                 do {
@@ -105,7 +115,8 @@
                     board[swap + (j*9)].value = tmp;
                 }
             }
-            //switch cols in section blocks
+            //switch cols within section blocks (Ex. all columns in the first three 
+            //columns will be swapped)
             for (var i = 0; i < 20; ++i) {
                 var block = Math.floor(Math.random() * 3);
                 do {
@@ -118,7 +129,7 @@
                     board[swap2 + (j*9)].value = tmp;
                 }
             }
-            //switch rows in section blocks
+            //switch rows within section blocks (Ex. all rows in the first three rows will be swapped)
             for (var i = 0; i < 20; ++i) {
                 var block = Math.floor(Math.random() * 3);
                 do {
@@ -131,7 +142,7 @@
                     board[swap2 + j].value = tmp;
                 }
             }
-            //switch numbers
+            //switch numbers (Ex. all 9s will be swapped with all 7s on the board)
             for (var i = 0; i < 20; ++i) {
                 do {
                     var numb1 = Math.ceil(Math.random() * 9);
@@ -145,6 +156,7 @@
             hideCells();
 
          };
+
         function hideCells() {
             //naiivly hides 4 squares/block
             var board = document.getElementsByClassName("cell");
@@ -179,7 +191,7 @@
             }
             return fishYatesArray;
         }
-
+//END CREATE SUDOKU SECTION
         function checkValid(numb) {
             var valid = true;
             if(numb.value != "") {
