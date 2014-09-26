@@ -36,13 +36,6 @@ and the board is valid. Based on code at http://jsfiddle.net/AbrGL/8/*/
 /*createSudoku() creates a base board framework and is executed on page load*/
 //BEGIN CREATE BOARD
         function createSudoku() {
-            var check = document.getElementsByClassName("cell");
-            //Check if board has previously been filled
-            if (check.length != 0) {
-                fillBoard(check); 
-                return;
-            }
-            //create table
             var body=document.getElementsByTagName('body')[0];
             var board=document.getElementById('sudokuTable');
             var boardbdy=document.createElement('tbody');
@@ -156,7 +149,7 @@ David J. Rager at http://blog.fourthwoods.com/2011/02/05/sudoku-in-javascript/
             hideCells();
 
          };
-/*hideCells naiivly hides 4 squares/block this will create an easy sudoku puzzle that will normally be unique.*/
+/*hideCells() naiivly hides 4 squares/block. This will create an easy sudoku puzzle that will normally be unique.*/
         function hideCells() {
             var board = document.getElementsByClassName("cell");
             var block = fishYatesShuffle(9);
@@ -176,7 +169,8 @@ David J. Rager at http://blog.fourthwoods.com/2011/02/05/sudoku-in-javascript/
                 }
             }
         } 
-/*fishYatesShuffle(size) implements the Fisher Yates algorithm to create a scrammbled array of length "size" */
+/*fishYatesShuffle(size) implements the Fisher Yates algorithm to create a scrambled array of length "size".
+Returns the scrambled array. */
         function fishYatesShuffle(size) {
             var fishYatesArray = [];
             for (var i = 0; i < size; i++) {
