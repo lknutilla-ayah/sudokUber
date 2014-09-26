@@ -1,5 +1,5 @@
 <h2>Overview:</h2> 
-<p>SudokUber is a sudoku puzzle generator web-app. Sudoku is a number placement puzzle where users place numbers 1-9 in a 9x9 board. Each 3x3 block, row, and col contains numbers 1-9, without duplicates.</p> 
+<p>SudokUber is a sudoku puzzle generator web-app. Sudoku is a number placement puzzle where users place numbers 1-9 in a 9x9 board. Each 3x3 block, row, and col contains numbers 1-9 without duplicates.</p> 
 </br>
 <h2>Structure:</h2></br>
   <h4>index.html:</h4>
