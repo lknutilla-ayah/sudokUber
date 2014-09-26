@@ -1,24 +1,34 @@
 /*style.scss*/
 
+$blue: #99EBFF;
+$light-blue: #F0FFFF;
+
 body {
-    background-color: #99EBFF;
+    background-color: $light-blue;
     font-family: 'Raleway', sans-serif;
     margin: 0 auto;
 }
 header {
     padding: 0 0 0 15px;
+    width: 100%
 }
 #wrapper {
-    max-width: 100%;
+    width: 85%;
+    max-width: 1133px;
     margin: 0 auto;
 }
+#complete {
+    background-color: $light-blue;
+}
 section.content { 
-    width: 70%; 
+    background-color: $blue;
+    width: 100%; 
     float:right;
     
 }
 
 aside.sidebar { 
+    background-color: $blue;
     width: 25%; 
     float:left; 
     padding: 0 22px 0 15px;
@@ -40,7 +50,10 @@ button:hover{
 }
 
 #sudokuTable {
+    top: 0;
+    background-color: $blue;
     margin: 0 auto 0 auto;
+    padding: 20px;
 }
 
 #timer {
@@ -63,4 +76,15 @@ input {
 
 .grey_block {
     background-color: #E6E6E6;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+@media only screen and (min-width: 480px) { 
+    aside { 
+        float:none; 
+    } 
 }

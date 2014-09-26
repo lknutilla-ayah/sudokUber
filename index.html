@@ -9,6 +9,7 @@
     <!-- start html block -->
         <header>
             <h1>SudokUber</h1>
+            <p id = "complete"></p>
         </header>
         <nav></nav>
         <section class="content">
@@ -27,7 +28,7 @@
             <p>The Classic Sudoku is a number placing puzzle based on a 9x9 grid with several given numbers. The object is to place the numbers 1 to 9 in the empty squares so that each row, each column and each 3x3 box contains the same number only once.</p>
             <p>Rules from <a href="http://www.conceptispuzzles.com/?uri=puzzle/sudoku/rules" target="_blank"> Conceptis Puzzles</a></p>
         </aside>
-        <footer></footer>
+        <footer>Built by: Laura Knutilla</footer>
     <!-- end html block -->
     </div>
 
@@ -60,8 +61,7 @@
 
         function stopClock() {
             window.clearInterval(clock);
-            sec = 0;
-            document.getElementById("timer").innerHTML="00:00";
+            document.getElementById("timer").innerHTML= convertToTime(min) + ":" + convertToTime(sec);
             clicked = false;
         }
         function createSudoku() {
@@ -78,6 +78,7 @@
                 for(var j = 0; j < 9; ++j){
                     var td=document.createElement('td');
                     var numb = document.createElement("input");
+                    numb.readOnly = true;
                     numb.className += "cell";
                     var block;
                     if (i < 3 && j < 3) {
@@ -179,7 +180,7 @@
 
          };
         function hideCells() {
-            //naiivly hide 5 squares/block
+            //naiivly hides squares
             var board = document.getElementsByClassName("cell");
             var block = fishYatesShuffle(9);
             for (var i = 0; i < 9; ++i) {
@@ -261,8 +262,6 @@
                     if (rowC === rowB || colC === colB || blockC === blockB) {
                         if (board[j].value === board[i].value) {
                             valid = false;
-                            document.getElementById(board[j].id).style.color = "red";
-                            document.getElementById(board[i].id).style.color = "red";
                         }
                         else if (valid) {
                             document.getElementById(board[j].id).style.color = "black";
@@ -273,8 +272,11 @@
             }
             if (valid) {
                stopClock(); 
-               console.log("Good");
+               alert("CONGRATS! " + "You finished in: " + convertToTime(min) + ":" + convertToTime(sec));
             } 
+            else {
+                alert("Not done yet!");
+            }
         }
 
     </script>
