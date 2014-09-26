@@ -1,4 +1,4 @@
-/*style.scss*/
+/*SudokUber: style.scss*/
 /*By: Laura Knutilla*/
 
 $blue: #B8DBFF;
@@ -12,16 +12,18 @@ body {
     font-family: 'Raleway', sans-serif;
     margin: 0 auto;
 }
+
 header {
     padding: 0 0 0 15px;
     width: 100%
 }
+
 #wrapper {
     width: 85%;
     max-width: 1133px;
     margin: 0 auto 0 auto;
 }
-
+/*SUDOKU PUZZLE START*/
 section.content { 
     width: 100%; 
     float: right;
@@ -34,12 +36,6 @@ section.content {
     @media only screen and (max-width: $break-small) {
         margin: 0 auto 0 auto;
     }
-}
-
-#timer {
-    font-size: 1.2em;
-    padding: 10px;
-    text-align: center;
 }
 
 input {
@@ -66,6 +62,8 @@ input {
 .grey_block {
     background-color: $dark-grey;
 }
+/*SUDOKU PUZZLE END*/
+/*SIDEBAR START*/
 aside.sidebar { 
     background-color: $blue;
     width: 25%; 
@@ -80,6 +78,12 @@ aside.sidebar {
     }
 }
 
+#timer {
+    font-size: 1.2em;
+    padding: 10px;
+    text-align: center;
+}
+
 button {
     font-family: 'Raleway', sans-serif;
     font-size: 1em;
@@ -91,9 +95,11 @@ button {
     text-align: center;
     outline: none;
 }
+
 button:hover{
     background-color: $dark-grey; 
 }
+/*SIDEBAR END*/
 footer {
     position: fixed;
     bottom: 0;

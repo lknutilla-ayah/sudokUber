@@ -1,7 +1,7 @@
 /*By Laura Knutilla*/
 
 /*Timer function begins time when "New Game" is pressed, and ends when "Done!" is pressed
-and the board is valid*/
+and the board is valid. Based on code at http://jsfiddle.net/AbrGL/8/*/
 //START TIMER SECTION
         var clicked = false;
         var sec,min;
@@ -12,16 +12,14 @@ and the board is valid*/
                 clock = setInterval("stopWatch()", 1000);
                 clicked = true;
             }
-            else if (clicked === true) {
-            }
         }
 
         function stopWatch() {
-            if (sec === 60) {
+            if (sec === 59) {
                 ++min;
                 sec = 0;
             }
-            sec++;
+            else sec++;
             document.getElementById("timer").innerHTML = convertToTime(min) + ":" + convertToTime(sec);
         }
         function convertToTime(time){
@@ -39,10 +37,12 @@ and the board is valid*/
 //BEGIN CREATE BOARD
         function createSudoku() {
             var check = document.getElementsByClassName("cell");
+            //Check if board has previously been filled
             if (check.length != 0) {
                 fillBoard(check); 
                 return;
             }
+            //create table
             var body=document.getElementsByTagName('body')[0];
             var board=document.getElementById('sudokuTable');
             var boardbdy=document.createElement('tbody');
@@ -156,9 +156,8 @@ David J. Rager at http://blog.fourthwoods.com/2011/02/05/sudoku-in-javascript/
             hideCells();
 
          };
-
+/*hideCells naiivly hides 4 squares/block this will create an easy sudoku puzzle that will normally be unique.*/
         function hideCells() {
-            //naiivly hides 4 squares/block
             var board = document.getElementsByClassName("cell");
             var block = fishYatesShuffle(9);
             for (var i = 0; i < 9; ++i) {
@@ -177,6 +176,7 @@ David J. Rager at http://blog.fourthwoods.com/2011/02/05/sudoku-in-javascript/
                 }
             }
         } 
+/*fishYatesShuffle(size) implements the Fisher Yates algorithm to create a scrammbled array of length "size" */
         function fishYatesShuffle(size) {
             var fishYatesArray = [];
             for (var i = 0; i < size; i++) {
@@ -192,6 +192,9 @@ David J. Rager at http://blog.fourthwoods.com/2011/02/05/sudoku-in-javascript/
             return fishYatesArray;
         }
 //END CREATE SUDOKU SECTION
+//BEGIN VALIDATION SECTION
+/*checkValid(numb) is called everytime a user clicks off of a filled cell entry. Checks to see if entry
+matches other cells in the same block, column, or section. Returns bool: true if valid, false if not*/
         function checkValid(numb) {
             var valid = true;
             if(numb.value != "") {
@@ -223,6 +226,7 @@ David J. Rager at http://blog.fourthwoods.com/2011/02/05/sudoku-in-javascript/
             }
             return valid;
         };
+//checkBoard() checks the entire board to see if valid and stops the timer if it the valid
         function checkBoard() {
             var board = document.getElementsByClassName("cell");
             var valid = true;
@@ -242,4 +246,5 @@ David J. Rager at http://blog.fourthwoods.com/2011/02/05/sudoku-in-javascript/
                 alert("Not done yet!");
             }
         }
+//END VALIDATION SECTION
 
