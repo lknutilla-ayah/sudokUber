@@ -1,7 +1,11 @@
 /*style.scss*/
+/*By: Laura Knutilla*/
 
-$blue: #99EBFF;
-$light-blue: #F0FFFF;
+$blue: #B8DBFF;
+$dark-grey: #E6E6E6;
+$light-blue: #E6F3FF;
+$break-small: 780px;
+$break-phone: 479px;
 
 body {
     background-color: $light-blue;
@@ -15,45 +19,21 @@ header {
 #wrapper {
     width: 85%;
     max-width: 1133px;
-    margin: 0 auto;
+    margin: 0 auto 0 auto;
 }
-#complete {
-    background-color: $light-blue;
-}
+
 section.content { 
-    background-color: $blue;
     width: 100%; 
-    float:right;
-    
-}
-
-aside.sidebar { 
-    background-color: $blue;
-    width: 25%; 
-    float:left; 
-    padding: 0 22px 0 15px;
-}
-
-button {
-    font-family: 'Raleway', sans-serif;
-    font-size: 1em;
-    width: 100%;
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 15px;
-    text-align: center;
-    outline: none;
-}
-button:hover{
-    background-color: #E6E6E6; 
+    float: right;
 }
 
 #sudokuTable {
-    top: 0;
     background-color: $blue;
-    margin: 0 auto 0 auto;
     padding: 20px;
+    border-radius: 5px;
+    @media only screen and (max-width: $break-small) {
+        margin: 0 auto 0 auto;
+    }
 }
 
 #timer {
@@ -72,19 +52,54 @@ input {
     width: 1.6em;
     height: 1.6em;
     font-size: 1.5em;
+    @media only screen and (max-width: $break-small) {
+        width: 1.2em;
+        height: 1.2em;
+    }
+    @media only screen and (max-width: $break-phone) {
+        width: 1em;
+        height: 1em;
+        font-size: 1em;
+    }
 }
 
 .grey_block {
-    background-color: #E6E6E6;
+    background-color: $dark-grey;
+}
+aside.sidebar { 
+    background-color: $blue;
+    width: 25%; 
+    float:left; 
+    padding: 0 22px 0 15px;
+    margin-right: 20px;
+    border-radius: 5px;
+    @media only screen and (max-width: $break-small) {
+        margin: 0 auto 0 auto;
+        width: 85%;
+        float: none;
+    }
 }
 
+button {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1em;
+    width: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    outline: none;
+}
+button:hover{
+    background-color: $dark-grey; 
+}
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    margin: 10px 10px 0 0;
+    padding-left: 10px;
+    background-color: $light-blue;
+    width: 100%;
 }
 
-@media only screen and (min-width: 480px) { 
-    aside { 
-        float:none; 
-    } 
-}

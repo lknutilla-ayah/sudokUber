@@ -1,6 +1,7 @@
 /*style.scss*/
+/*By: Laura Knutilla*/
 body {
-  background-color: #F0FFFF;
+  background-color: #E6F3FF;
   font-family: 'Raleway', sans-serif;
   margin: 0 auto; }
 
@@ -11,41 +12,19 @@ header {
 #wrapper {
   width: 85%;
   max-width: 1133px;
-  margin: 0 auto; }
-
-#complete {
-  background-color: #F0FFFF; }
+  margin: 0 auto 0 auto; }
 
 section.content {
-  background-color: #99EBFF;
   width: 100%;
   float: right; }
 
-aside.sidebar {
-  background-color: #99EBFF;
-  width: 25%;
-  float: left;
-  padding: 0 22px 0 15px; }
-
-button {
-  font-family: 'Raleway', sans-serif;
-  font-size: 1em;
-  width: 100%;
-  background-color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 15px;
-  text-align: center;
-  outline: none; }
-
-button:hover {
-  background-color: #E6E6E6; }
-
 #sudokuTable {
-  top: 0;
-  background-color: #99EBFF;
-  margin: 0 auto 0 auto;
-  padding: 20px; }
+  background-color: #B8DBFF;
+  padding: 20px;
+  border-radius: 5px; }
+  @media only screen and (max-width: 780px) {
+    #sudokuTable {
+      margin: 0 auto 0 auto; } }
 
 #timer {
   font-size: 1.2em;
@@ -62,16 +41,52 @@ input {
   width: 1.6em;
   height: 1.6em;
   font-size: 1.5em; }
+  @media only screen and (max-width: 780px) {
+    input {
+      width: 1.2em;
+      height: 1.2em; } }
+  @media only screen and (max-width: 479px) {
+    input {
+      width: 1em;
+      height: 1em;
+      font-size: 1em; } }
 
 .grey_block {
   background-color: #E6E6E6; }
 
-footer {
-  position: absolute;
-  bottom: 0; }
+aside.sidebar {
+  background-color: #B8DBFF;
+  width: 25%;
+  float: left;
+  padding: 0 22px 0 15px;
+  margin-right: 20px;
+  border-radius: 5px; }
+  @media only screen and (max-width: 780px) {
+    aside.sidebar {
+      margin: 0 auto 0 auto;
+      width: 85%;
+      float: none; } }
 
-@media only screen and (min-width: 480px) {
-  aside {
-    float: none; } }
+button {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1em;
+  width: 100%;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+  outline: none; }
+
+button:hover {
+  background-color: #E6E6E6; }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  margin: 10px 10px 0 0;
+  padding-left: 10px;
+  background-color: #E6F3FF;
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
